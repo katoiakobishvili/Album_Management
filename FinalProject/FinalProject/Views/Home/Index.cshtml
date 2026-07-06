@@ -1,0 +1,29 @@
+﻿@model IEnumerable<FinalProject.Models.Album>
+
+<div class="text-center">
+<h1 class="display-4 font-monospace">Welcome</h1>
+<h2 class="lead font-monospace">Explore and manage your albums collection</h2>
+<p>To view albums as a list, press the button below</p>
+<a asp-controller="Album" asp-action="Index" class="btn btn-primary btn-lg">View Albums List</a>
+<br><br>
+    <div class="row"> 
+@foreach (var album in Model)
+    {
+
+        <div class="col-lg-3 col-sm-6">
+            <div class="row-p2">
+                <div class="col-12 p-1">
+                    <div class="card border-0 p-3 shadow border-top border-5 rounded">
+
+                        <h5>@album.Name</h5>
+                        <p>Artist: @album.Artist</p>
+                            <a asp-controller="Album" asp-action="Details" asp-route-id="@album.Id"
+                            class="btn btn-secondary">View Album Details</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    }
+    </div>

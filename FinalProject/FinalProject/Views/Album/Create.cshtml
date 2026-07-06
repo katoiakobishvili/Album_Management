@@ -1,0 +1,74 @@
+@model FinalProject.Models.Album
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create New Album</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Artist" class="control-label"></label>
+                <input asp-for="Artist" class="form-control" />
+                <span asp-validation-for="Artist" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Genre" class="control-label"></label>
+                <input asp-for="Genre" class="form-control" />
+                <span asp-validation-for="Genre" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Description" class="form-label"></label>
+                <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+               <label class="form-label d-block fw-bold">Select Type</label>
+               <input class="form-check-input" type="radio" asp-for="Type" value="Vinyl">
+               <label>Vinyl</label>
+             
+               <input class="form-check-input" type="radio" asp-for="Type" value="CD">
+               <label>CD</label>
+             
+               <input class="form-check-input" type="radio" asp-for="Type" value="Cassette">
+               <label>Cassette</label>
+            </div>
+            <div class="mb-3" style="max-width: 160px;">
+                <label asp-for="Rating" class="form-label fw-bold">Album Rating (0 - 10)</label>
+                <div class="input-group">
+                    <input asp-for="Rating" type="number" step="0.5" min="0" max="10"
+                           class="form-control text-center bg-primary text-white border-secondary fw-bold"
+                           style="color: white" />
+                </div>
+                <span asp-validation-for="Rating" class="text-danger small d-block mt-1"></span>
+            </div>
+            <br>
+            <div class="form-group">
+                <label asp-for="IsOwned" class="control-label fw-bold"></label>
+                <input asp-for="IsOwned" class="form-check-input" />
+                <span asp-validation-for="IsOwned" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+            <br>
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-action="Index" class="btn btn-outline-secondary ms-2">Back to List</a>
+</div>
