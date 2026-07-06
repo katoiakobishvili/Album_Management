@@ -13,9 +13,22 @@ namespace FinalProject.Controllers
         {
             _db = db;
         }
-        public IActionResult Index()
+
+        public IActionResult Index(string? type)
         {
-            List<Album> albums = _db.Albums.ToList();
+            List<Album> albums;
+
+            if (string.IsNullOrEmpty(type))
+            {
+                albums = _db.Albums.ToList();
+            }
+            else
+            {
+                albums = _db.Albums
+                            .Where(a => a.Type == type)
+                            .ToList();
+            }
+
             return View(albums);
         }
 
@@ -25,7 +38,7 @@ namespace FinalProject.Controllers
             return View();
         }
 
-        [HttpGet]
+        [HttpPost]
         public IActionResult Create(Album album)
         {
             if (ModelState.IsValid)
